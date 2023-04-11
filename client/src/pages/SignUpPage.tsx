@@ -28,20 +28,21 @@ const SignUpPage = (props: Props) => {
 
     const onSubmit = async (data: SignupForm) => {
         console.log(data);
-        let isEmailValid = false;
-        for (const users of user) {
-            if (users.email == data.email) {
-                isEmailValid = true;
-            } else {
-                const response = await signup(data)
+        const isEmailValid = user.some(user => user.email === data.email);
+        if (isEmailValid) {
+            toast("Tài khoản đã tồn tại !");
+        } else {
+            try {
+                const response = await signup(data);
                 console.log(response);
-                navigate('/signin')
-                toast("Đăng kí thành công !")
+                navigate('/signin');
+                toast("Đăng kí thành công !");
+            } catch (error) {
+                console.log(error);
+                toast("Đăng kí không thành công !");
             }
         }
-        if (isEmailValid) {
-            toast("Tài khoản đã tồn tại !")
-        }
+
     }
 
     return (
@@ -52,7 +53,7 @@ const SignUpPage = (props: Props) => {
                     <div className="w-full md:w-1/2 flex flex-col">
 
                         <div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-                            <a href="#" className="bg-black text-white font-bold text-xl p-4">Logo</a>
+                            <a href="/" className="w-[200px]"><img src="https://res.cloudinary.com/dwp7umncy/image/upload/v1680975890/ass_ts_nodejs/logo_TH_hkjdcr.png" alt="" /></a>
                         </div>
 
                         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">

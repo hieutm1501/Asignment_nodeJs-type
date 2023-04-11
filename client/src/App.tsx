@@ -17,6 +17,8 @@ import { getAddCategory, getAllCategory, getUpdateCategories, getdeleteCategory 
 import CategoriesHome from './pages/admin/danhmuc/CategoriesHome'
 import CategoriesAdd from './pages/admin/danhmuc/CategoriesAdd'
 import CategoriesUpdate from './pages/admin/danhmuc/CategoriesUpdate'
+import CartPage from './pages/CartPage'
+import UserHome from './pages/admin/users/UserHome'
 // import './App.css'
 
 function App() {
@@ -60,7 +62,10 @@ function App() {
 
         <Route path='/' element={<BaseLayout />} >
           <Route index element={<HomePage products={product} />} />
-          <Route path='products/:id' element={<ProductDetaliPage />} />
+          <Route path='products/:id'  >
+            <Route index element={<ProductDetaliPage />} />
+            <Route path='cart' element={<CartPage />} />
+          </Route>
         </Route>
         {/* admin */}
         <Route path='/admin' element={<AdminLayoutPage />}>
@@ -71,6 +76,9 @@ function App() {
             <Route index element={<CategoriesHome categories={categories} onRemove={onHandleRemoveCategories} />} />
             <Route path='add' element={<CategoriesAdd OnAdd={onHandleAddCategories} />} />
             <Route path='update/:id' element={<CategoriesUpdate OnUpdate={onHandleUpdateCategories} categories={categories} />} />
+          </Route>
+          <Route path='users' >
+            <Route index element={<UserHome />} />
           </Route>
         </Route>
       </Routes>

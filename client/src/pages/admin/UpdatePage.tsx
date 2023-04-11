@@ -1,8 +1,10 @@
 
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
-import { ICategory, IProduct } from '../../interfaces/product';
+import { useEffect, useState } from 'react';
+import { ICategory, IProduct, IUsers } from '../../interfaces/product';
+import { toast } from 'react-toastify';
+import { getAllUser } from '../../api/auth';
 
 type UpdatePageProps = {
     categories: ICategory[],
@@ -19,9 +21,17 @@ const UpdatePage = ({ products, categories, onUpdate }: UpdatePageProps) => {
         const currentProduct = products.find(item => item._id == id)
         reset(currentProduct)
     }, [])
+    const [user, setuser] = useState<IUsers[]>([])
+    useEffect(() => {
+        getAllUser().then(({ data: { user } }) => setuser(user))
+    }, [])
+    console.log(user);
+
     const onHandleSubmit = (data: any) => {
         onUpdate(data);
         navigate('/admin')
+        toast("chỉnh sửa sản phẩm thành công!")
+
     }
     return (
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StarOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getOne } from '../api/product';
 import { IProduct } from '../interfaces/product';
 import { Rate } from 'antd';
@@ -139,23 +139,11 @@ const ProductDetaliPage = (props: Props) => {
                                 </fieldset>
 
                                 <div className="mt-8 flex gap-4">
-                                    <div>
-                                        <label htmlFor="quantity" className="sr-only">Qty</label>
-
-                                        <input
-                                            type="number"
-                                            id="quantity"
-                                            min="1"
-                                            value="1"
-                                            className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                                        />
-                                    </div>
-
                                     <button
                                         type="submit"
                                         className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
                                     >
-                                        Add to Cart
+                                        <Link to={`/products/${products._id}/cart`}>Add to cart</Link >
                                     </button>
                                 </div>
                             </form>

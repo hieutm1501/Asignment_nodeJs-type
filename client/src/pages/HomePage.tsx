@@ -1,5 +1,5 @@
-import React from 'react'
-import { IProduct } from '../interfaces/product'
+import React, { useState } from 'react';
+import { IProduct } from '../interfaces/product';
 import { Rate } from 'antd';
 import { Carousel } from 'antd';
 import { Link } from 'react-router-dom';
@@ -16,10 +16,14 @@ type HomePageProps = {
 }
 
 const HomePage = ({ products }: HomePageProps) => {
-    if (!products) return <div>Loading...</div>
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const filterProducts = () => {
+        return products.filter(product => {
+            return product.name.toLowerCase().includes(searchKeyword.toLowerCase());
+        });
+    };
 
     return (
-
         <div>
             <div className=''>
                 <Carousel autoplay>
@@ -35,8 +39,11 @@ const HomePage = ({ products }: HomePageProps) => {
                 </Carousel>
             </div>
             <h1 className='text-[22px] text-[#444444] font-normal mt-[23px]'>ĐIỆN THOẠI NỔI BẬT NHẤT</h1>
+            <div className='flex mx-[70px] mt-[15px]'>
+                <input type="text" placeholder="Tìm kiếm..." value={searchKeyword} onChange={(event) => setSearchKeyword(event.target.value)} className="w-full rounded p-2 py-3 pl-10 text-gray-900 placeholder-gray-500 placeholder-opacity-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" />
+            </div>
             <div className='grid grid-cols-7 gap-6 mx-[70px] mt-[15px]'>
-                {products.map((item, index) =>
+                {filterProducts().map((item, index) =>
                     <div key={index} className='my-[66px] hover:bg-[#F8F8F8]' >
                         <Link to={`/products/${item._id}`}>
                             <a href=""><img className='w-[160px] h-[160px]' src={`${item.image}`} alt="" /></a>
@@ -51,9 +58,8 @@ const HomePage = ({ products }: HomePageProps) => {
                     </div>
                 )}
             </div>
-
         </div>
     )
 }
 
-export default HomePage
+export default HomePage;

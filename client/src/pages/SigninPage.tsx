@@ -24,18 +24,22 @@ const SigninPage = (props: Props) => {
         for (const users of user) {
             if (users.email !== inputValue.email) {
                 isEmailValid = true;
+            } else {
+                const { data } = await signin(inputValue);
+                localStorage.setItem("user", JSON.stringify(data));
+                if (toast.isActive('login')) {
+                    toast.dismiss('login'); // ẩn toast đã hiển thị nếu còn tồn tại
+                }
+                toast(`Đăng Nhập ${data.user.role}`, { toastId: 'login' });
+                if (users.role === "admin") {
+                    navigate('/admin');
+                } else if (users.role === "member") {
+                    navigate('/');
+                }
             }
-            else {
-                const { data } = await signin(inputValue)
-                console.log(data);
-                localStorage.setItem("user", JSON.stringify(data))
-                navigate('/admin')
-                toast(`Đăng Nhập ${data.user.role}`)
-
+            if (!isEmailValid) {
+                toast('tài khoản or password không khớp')
             }
-        }
-        if (isEmailValid) {
-            toast("Tài khoản hoặc mật khẩu không đúng")
         }
     }
 
@@ -47,7 +51,7 @@ const SigninPage = (props: Props) => {
                 <div className="w-full md:w-1/2 flex flex-col">
 
                     <div className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-                        <a href="#" className=""><img src="https://res.cloudinary.com/dwp7umncy/image/upload/v1680449086/ass_ts_nodejs/product/anhhtus-logo_2_1_uajpyt.png" alt="" /></a>
+                        <a href="#" className="w-[200px]"><img src="https://res.cloudinary.com/dwp7umncy/image/upload/v1680975890/ass_ts_nodejs/logo_TH_hkjdcr.png" alt="" /></a>
                     </div>
 
                     <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">

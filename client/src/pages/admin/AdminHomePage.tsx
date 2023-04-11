@@ -75,12 +75,6 @@ const AdminHomePage = ({ products, categories, onRemove }: AdminHomePageProps) =
             >
                 <Button >Delete</Button>
             </Popconfirm>
-            {/* <button onClick={() => {
-                if (window.confirm('Bạn có chắc muốn xóa sản phẩm này không?')) {
-                    removeProduct(product._id)
-                }
-
-            }} className='bg-red-500 text-[white]'>Delete</button> */}
         </div>
 
     }));

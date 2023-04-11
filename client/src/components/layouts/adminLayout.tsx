@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import { AppleOutlined, CarryOutOutlined, CustomerServiceOutlined, HomeOutlined, LaptopOutlined, NotificationOutlined, PlusCircleOutlined, PlusSquareOutlined, UserOutlined } from '@ant-design/icons';
+import { AppleOutlined, CarryOutOutlined, CustomerServiceOutlined, HomeOutlined, ImportOutlined, LaptopOutlined, NotificationOutlined, PlusCircleOutlined, PlusSquareOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
@@ -13,11 +13,16 @@ const { Header, Content, Sider } = Layout;
 const items1: MenuProps['items'] = [
     {
         key: "sub1",
+        icon: <ImportOutlined />,
+        label: <Link to={"/"}>Trang Chủ</Link>
+    },
+    {
+        key: "sub2",
         icon: <PlusSquareOutlined />,
         label: <Link to={"/admin/add"}>Thêm Sản Phẩm</Link>
     },
     {
-        key: "sub2",
+        key: "sub3",
         icon: <PlusCircleOutlined />,
         label: <Link to={"/admin/categories/add"}>Thêm Danh Mục</Link>
     }
@@ -71,7 +76,7 @@ const items2: MenuProps['items'] = [
     {
         key: 'sub5',
         icon: React.createElement(UserOutlined),
-        label: 'User',
+        label: <Link to={'/admin/users'}>User</Link>,
         children: [
             { key: '13', label: 'Admin' },
             { key: '14', label: 'Member' }

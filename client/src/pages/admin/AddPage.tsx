@@ -18,7 +18,7 @@ const AddPage = ({ onAdd, categories }: AddPageProps) => {
     const onHandleSubmit = (data: any) => {
         onAdd(data)
         navigate('/admin')
-        // toast("Thêm Sản Phẩm Thành Công !")
+        toast("Thêm Sản Phẩm Thành Công !")
     }
     return (
         <div id='adminadd' >
