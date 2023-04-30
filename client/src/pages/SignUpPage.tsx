@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom'
-import * as Yup from 'yup'
 import { SignupForm, signupSchems } from '../schemas/auth';
 import { getAllUser, signup } from '../api/auth';
-import { Button } from 'antd';
 import { useEffect, useState } from 'react';
 import { SizeType } from 'antd/es/config-provider/SizeContext';
 import { IUsers } from '../interfaces/product';

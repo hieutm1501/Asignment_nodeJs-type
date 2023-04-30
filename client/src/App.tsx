@@ -60,7 +60,7 @@ function App() {
         <Route path='signup' element={<SignUpPage />} />
         <Route path='signin' element={<SigninPage />} />
 
-        <Route path='/' element={<BaseLayout />} >
+        <Route path='/'  >
           <Route index element={<HomePage products={product} />} />
           <Route path='products/:id'  >
             <Route index element={<ProductDetaliPage />} />

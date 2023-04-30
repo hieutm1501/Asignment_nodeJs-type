@@ -1,4 +1,4 @@
-import { GlobalOutlined, PhoneOutlined } from '@ant-design/icons'
+import { PhoneOutlined } from '@ant-design/icons'
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
@@ -9,45 +9,97 @@ const BaseLayout = (props: Props) => {
 
     return (
         <div>
-            <header className='bg-[#EEEEEE]'>
-                <div className='flex mx-[40px]'>
-                    <div className="mt-[25px]  hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul className=" font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                            <li>
-                                <a href="#" className="text-[17px] block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
-                            </li>
-                            <li>
-                                <a href="#" className="text-[17px] block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-                            </li>
-                            <li>
-                                <a href="#" className="text-[17px] block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-                            </li>
-                            <li>
-                                <a href="#" className="text-[17px] block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="#" className="text-[17px] block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className='ml-[265px] mr-[275px] text-center'>
-                        {<Link to={'/'}><img className='w-[150px] h-[70px]' src="https://res.cloudinary.com/dwp7umncy/image/upload/v1680975890/ass_ts_nodejs/logo_TH_hkjdcr.png" alt="" /></Link>}
-                    </div>
-                    <div className='flex    w-[380px]'>
-                        <div><p className='text-[17px] mt-[25px]'>Talk to sales</p></div>
-                        <div className='mx-[17px] mt-[24px]'>{<Link to={'/'}><a href="">{<GlobalOutlined className='text-[25px]' />}</a></Link>}</div>
-                        <div className='mt-[24px]'>{<Link to={'tel:0858879636'}><a href="tel:0858879636">{<PhoneOutlined className='text-[25px]' />}</a></Link>}</div>
-                        <div className='ml-[15px] mt-[19px] '><button className='text-gray-900 border border-gray-300  hover:bg-gray-100  rounded-lg text-sm px-5 py-[6.5px] mr-2  dark:bg-gray-800 dark:text-white dark:border-gray-600  '>{<Link to={'/signin'}>Login</Link>}</button></div>
-                        <div className='mt-[19px]'><button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{<Link to={'/signup'}>Sign up</Link>}</button></div>
+            <header className='bg-[#EEEEEE] w-full fixed z-50  '>
+                <div aria-label="Site Header" className="border-b border-gray-100">
+                    <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8">
+                        <div className="flex items-center gap-4">
+                            <button type="button" className="p-2 lg:hidden">
+                                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+
+                            <a href="#" className="flex">
+                                <span className="sr-only">Logo</span>
+                                <span className="inline-block w-[90px]  rounded-lg "><img className=''
+                                    src="https://res.cloudinary.com/dwp7umncy/image/upload/v1682614031/profile/logo_THnew_rgvebp.png"
+                                    alt="" /></span>
+                            </a>
+                        </div>
+
+                        <div className="flex flex-1 items-center justify-end gap-8">
+                            <nav aria-label="Site Nav"
+                                className="hidden  lg:flex lg:gap-4 lg:text-[15px] lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500">
+                                <a href="/about"
+                                    className="block  h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                                    About
+                                </a>
+
+                                <a href="/news"
+                                    className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                                    Category
+                                </a>
+
+                                <a href="/products"
+                                    className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                                    Products
+                                </a>
+
+                                <a href="/contact"
+                                    className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700">
+                                    Contact
+                                </a>
+                            </nav>
+
+                            <div className="flex items-center">
+                                <div className="flex items-center border-x border-gray-100">
+                                    <span className="border-e border-e-gray-100">
+                                        <a href="/cart"
+                                            className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                            </svg>
+
+                                            <span className="sr-only">Cart</span>
+                                        </a>
+                                    </span>
+
+                                    <span className="border-e border-e-gray-100">
+                                        <a href="/account"
+                                            className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                                            <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                            </svg>
+
+                                            <span className="sr-only"> Account </span>
+                                        </a>
+                                    </span>
+
+                                    <span className="border-e border-e-gray-100">
+                                        <a href="/account"
+                                            className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700">
+                                            <Link to={'tel:0858879636'}>
+                                                <a href="tel:0858879636">{<PhoneOutlined />}</a>
+                                            </Link>
+
+                                            <span className="sr-only"> Account </span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 {/* banner */}
-
 
             </header>
 
-            <main> <Outlet /> </main>
+
+            <main className=''> <Outlet /> </main>
 
             <footer aria-label="Site Footer" className="bg-white">
                 <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
